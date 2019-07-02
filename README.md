@@ -1,3 +1,3 @@
-# Curso de Java Spring e teste
+# Curso de Java Spring e Teste
 
 Feito na Caelum
