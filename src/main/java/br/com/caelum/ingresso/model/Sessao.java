@@ -8,7 +8,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
-@Entity
+@Entity 
 public class Sessao {
 
 	@Id
@@ -18,7 +18,14 @@ public class Sessao {
 	
 	@ManyToOne
 	private Sala sala;
+	
+	@ManyToOne
 	private Filme filme;
+	
+	/*
+	 * @deprecated hibernate only
+	 */
+	public Sessao() {}
 	
 	public Sessao(LocalTime horario, Filme filme, Sala sala) {
 		this.horario = horario;
