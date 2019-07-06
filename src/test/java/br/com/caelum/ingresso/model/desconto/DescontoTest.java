@@ -8,6 +8,7 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import br.com.caelum.ingresso.model.Filme;
+import br.com.caelum.ingresso.model.Ingresso;
 import br.com.caelum.ingresso.model.Sala;
 import br.com.caelum.ingresso.model.Sessao;
 
