@@ -19,7 +19,6 @@ import br.com.caelum.ingresso.model.Carrinho;
 import br.com.caelum.ingresso.model.Cartao;
 import br.com.caelum.ingresso.model.Ingresso;
 import br.com.caelum.ingresso.model.form.CarrinhoForm;
-import br.com.caelum.ingresso.model.form.CartaoForm;
 
 @Controller
 public class CompraController {
@@ -46,29 +45,26 @@ public class CompraController {
 	}
 	
 	@GetMapping("/compra")
-	public ModelAndView checkout(Cartao cartao) {
-		
+	public ModelAndView checkout(Cartao cartao){
 		ModelAndView modelAndView = new ModelAndView("compra/pagamento");
-		System.out.println("retornando: " + carrinho.getIngressos().size());
+		
 		modelAndView.addObject("carrinho", carrinho);
 		
 		return modelAndView;
 	}
 	
-	@PostMapping("compra/comprar")
+	@PostMapping("/compra/comprar")
 	@Transactional
-	public ModelAndView comprar(@Valid CartaoForm cartao, BindingResult result) {
+	public ModelAndView comprar(@Valid Cartao cartao, BindingResult result){
+	
 		ModelAndView modelAndView = new ModelAndView("redirect:/");
 		
-		System.out.println(cartao.getVencimento());
-		if(true) {
+		if (cartao.isValido()){
 			compraDao.save(carrinho.toCompra());
-			this.carrinho.limpa();
-		} else {
+		} else{
 			result.rejectValue("vencimento", "Vencimento inválido");
-			return checkout(new Cartao());
+			return checkout(cartao);
 		}
-		
 		return modelAndView;
 	}
 }

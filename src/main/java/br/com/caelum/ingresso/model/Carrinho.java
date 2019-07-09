@@ -26,7 +26,7 @@ public class Carrinho {
 				.equals(lugar));
 	}
 	
-	public Compra toCompra() {
+	public Compra toCompra(){
 		return new Compra(ingressos);
 	}
 	

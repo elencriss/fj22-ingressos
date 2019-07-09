@@ -19,12 +19,11 @@ public class Compra {
 	
 	@OneToMany(cascade = CascadeType.PERSIST)
 	List<Ingresso> ingressos = new ArrayList<>();
-	
 	/**
-	 * @deprecated hibernate only
-	 */
-	
-	public Compra() {}
+	* @deprecated hibernate only
+	*/
+	public Compra() {
+	}
 	
 	public Compra(List<Ingresso> ingressos) {
 		this.ingressos = ingressos;
@@ -45,6 +44,6 @@ public class Compra {
 	public void setIngressos(List<Ingresso> ingressos) {
 		this.ingressos = ingressos;
 	}
-	
+
 
 }
